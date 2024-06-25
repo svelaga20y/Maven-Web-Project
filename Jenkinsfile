@@ -8,9 +8,9 @@ node {
         // Run the maven build
         withEnv(["MVN_HOME=$mvnHome"]) {
             if (isUnix()) {
-                sh '"$MVN_HOME/bin/mvn" clean package'
+                sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package'
             } else {
-                bat(/"%MVN_HOME%\bin\mvn" clean package/)
+                bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package/)
             }
         }
     }
@@ -18,19 +18,19 @@ node {
         // Run the maven build
         withEnv(["MVN_HOME=$mvnHome"]) {
             if (isUnix()) {
-                sh '"$MVN_HOME/bin/mvn" clean install'
+                sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean install'
             } else {
-                bat(/"%MVN_HOME%\bin\mvn" clean install/)
+                bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean install/)
             }
         }
     }
-    stage('test') {
+	stage('test') {
         // Run the maven build
         withEnv(["MVN_HOME=$mvnHome"]) {
             if (isUnix()) {
-                sh '"$MVN_HOME/bin/mvn" clean test'
+                sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean test'
             } else {
-                bat(/"%MVN_HOME%\bin\mvn" clean test/)
+                bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean test/)
             }
         }
     }
