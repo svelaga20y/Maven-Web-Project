@@ -1,7 +1,7 @@
 node {
    
     stage('checkout') { 
-        git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+        git 'https://github.com/praveenkumar1290/Maven-Web-Project.git'
     }
     stage('Build') {
        bat 'mvn package'
