@@ -34,6 +34,16 @@ node {
             }
         }
     }
+	stage('sonarscanner') { 
+        // Run the maven build
+        withEnv(["MVN_HOME=$mvnHome"]) {
+            if (isUnix()) {
+                sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean sonar:sonar -Dsonar.projectKey=test -Dsonar.host.url=http://localhost:9000 -Dsonar.login=d6f3f9a133e662198bcd324ce891e5ce7384e66b'
+            } else {
+                bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean sonar:sonar -Dsonar.projectKey=test -Dsonar.host.url=http://localhost:9000 -Dsonar.login=d6f3f9a133e662198bcd324ce891e5ce7384e66b/)
+            }
+        }
+    }
   
     
 }
