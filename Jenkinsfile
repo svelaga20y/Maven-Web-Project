@@ -1,7 +1,7 @@
-node('slave2') {
+node('any') {
    
     stage('checkout') { 
-        git 'https://github.com/praveenkumar1290/Maven-Web-Project.git'
+        git 'https://github.com/svelaga20y/Maven-Web-Project.git'
     }
     
     stage('build') {
